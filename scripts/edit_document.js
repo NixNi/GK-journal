@@ -1,3 +1,5 @@
+import displayData from "./display_data";
+
 document.getElementById("main_data").addEventListener("input", (e) => {
   const [target_ind, target_col] = e.target.id.split('.');
   let formDataArray = JSON.parse(localStorage.getItem('jsonData')) || [];

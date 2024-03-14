@@ -1,0 +1,43 @@
+{
+  "name": "gk-journal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "wb": "npx webpack",
+    "start": "npx webpack & npx electron .",
+    "build": "npx webpack & npx electron-builder build"
+  },
+  "author": "NixNi",
+  "license": "ISC",
+  "dependencies": {
+    
+  },
+  "devDependencies": {
+    "electron": "^29.1.4",
+    "webpack": "^5.90.3",
+    "electron-builder": "^24.13.3",
+    "webpack-cli": "^5.1.4"
+  },
+  "build": {
+  "appId": "com.nixni.GK",
+  "productName": "Глаукомный журнал",
+  "directories": {
+    "output": "build"
+  },
+  "electronLanguages":["ru"],
+  "files": [
+    "index.js",
+    "index.html",
+    "main.css",
+    "./dist/script.bundle.js",
+    "./dist/xlsx.full.min.js"
+  ],
+  "win": {
+    "target": "nsis"
+  },
+  "linux": {
+    "target": "AppImage"
+  }
+}
+}
