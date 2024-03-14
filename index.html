@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="main.css">
+  <title>Глаукомный журнал</title>
+  <script lang="javascript" src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+</head>
+
+<body>
+  <div class="bottom_panel">
+    <input type="file" id="fileInput" />
+    <button type="save" id="saveButton">Сохранить</button>
+      <form id="form">
+        <table>
+          <tr>
+            <th>ФИО</th>
+            <th>Г.Р.</th>
+            <th>Адрес</th>
+            <th>Уч</th>
+            <th>Телефон</th>
+            <th>Постановка</th>
+            <th>Диагноз</th>
+            <th>Стадия</th>
+            <th>Наличие ВМД</th>
+            <th>Примечание</th>
+            <th>...</th>
+          </tr>
+          <tr>
+            <td><input type="text" name="FIO" id="FIO"></td>
+            <td><input type="date" name="DR" id="DR"></td>
+            <td><input type="text" name="ADR" id="ADR"></td>
+            <td><input type="number" name="UC" id="UC"></td>
+            <td><input type="text" name="PHONE" id="PHONE"></td>
+            <td><input type="year" name="POST" id="POST"></td>
+            <td>
+              <div class="flex">
+                <select name="TYPE" id="TYPE">
+                  <option value="" selected></option>
+                  <option value="О/у">О/у</option>
+                  <option value="Офт/г">Офт/г</option>
+                  <option value="См">См</option>
+                </select>
+                <select name="STD" id="STD">
+                  <option value="" selected></option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+              </div>
+            </td>
+            <td>
+              <div class="flex">
+                <select name="OD_TYPE" id="OD_TYPE">
+                  <option value="" selected></option>
+                  <option value="О/у">О/у</option>
+                  <option value="Офт/г">Офт/г</option>
+                  <option value="См">См</option>
+                  <option value="Анофтальм">Анофтальм</option>
+                </select>
+                <select name="OD_STD" id="OD_STD">
+                  <option value="" selected></option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+                <select name="OD_D" id="OD_D">
+                  <option value="" selected></option>
+                  <option value="a">a</option>
+                  <option value="b">b</option>
+                  <option value="c">c</option>
+                </select>
+              </div>
+              <div class="flex">
+                <select name="OS_TYPE" id="OS_TYPE">
+                  <option value="" selected></option>
+                  <option value="О/у">О/у</option>
+                  <option value="Офт/г">Офт/г</option>
+                  <option value="См">См</option>
+                  <option value="См">Анофтальм</option>
+                </select>
+                <select name="OS_STD" id="OS_STD">
+                  <option value="" selected></option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+                <select name="OS_D" id="OS_D">
+                  <option value="" selected></option>
+                  <option value="a">a</option>
+                  <option value="b">b</option>
+                  <option value="c">c</option>
+                </select>
+              </div>
+            </td>
+            <td><input type="text" name="WMD" id="WMD"></td>
+            <td><input type="text" name="PRIM" id="PRIM"></td>
+            <td><button type="submit">Добавить</button></td>
+          </tr>
+        </table>
+      </form>
+  </div>
+
+  <table class="table_main" id="main_data">
+    <thead>
+      <tr>
+        <th rowspan="2">№</th>
+        <th rowspan="2">ФИО</th>
+        <th rowspan="2">Г.Р.</th>
+        <th rowspan="2">Адрес</th>
+        <th rowspan="2">Уч</th>
+        <th rowspan="2">Телефон</th>
+        <th rowspan="2">Постановка</th>
+        <th rowspan="2">Снятие</th>
+        <th colspan="2">Диагноз</th>
+        <th colspan="6">Стадия</th>
+        <th rowspan="2">Наличие ВМД</th>
+        <th rowspan="2">Примечание</th>
+        <th rowspan="2">...</th>
+      </tr>
+      <tr>
+        <th class="table_min">Тип диагн</th>   
+        <th class="table_min">Стадия</th>
+        <th class="table_min">OD ТД</th>
+        <th class="table_min">OD Стд</th>
+        <th class="table_min">OD Давл</th>
+        <th class="table_min">OS ТД</th>
+        <th class="table_min">OS Стд</th>
+        <th class="table_min">OS Давл</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <script src="/scripts/edit_document.js"></script>
+  <script src="/scripts/load_document.js"></script>
+  <script src="/scripts/save_document.js"></script>
+  <script src="/scripts/add_document.js"></script>
+  <script src="/scripts/authomatization_form.js"></script>
+</body>
+
+</html>
