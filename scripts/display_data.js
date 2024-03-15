@@ -5,6 +5,7 @@ export const orderArray = [
 
 export default function displayData() {
   const data = JSON.parse(localStorage.getItem('jsonData')) || [];
+  const editedData = JSON.parse(localStorage.getItem('editedData')) || [];
   const table = document.getElementById("main_data").children[1];
   table.innerHTML = '';
   data.forEach((rowData, ind) => {
@@ -16,7 +17,8 @@ export default function displayData() {
       const td = document.createElement('td');
       td.textContent = rowData[cellName];
       td.contentEditable = true;
-      td.id = "" + ind + "." + cellName;
+      td.id = "" + rowData.id + "." + cellName;
+      if (editedData.indexOf(td.id) >= 0) td.classList.add('edited')
       row.appendChild(td);
     });
     const del = document.createElement('td');

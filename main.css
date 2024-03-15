@@ -127,3 +127,7 @@ form th {
   text-align: center;
   width: 3%;
 }
+
+.edited {
+  background-color: #e0eca0;
+}

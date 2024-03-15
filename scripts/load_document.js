@@ -38,6 +38,8 @@ function processWorkbook(workbook) {
     }
     
   })
+  jsonData.forEach((it, ind) => it.id = ind)
   localStorage.setItem('jsonData', JSON.stringify(jsonData));
+  localStorage.setItem('editedData', JSON.stringify([]));
   displayData();
 }

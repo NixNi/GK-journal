@@ -1,4 +1,4 @@
-import { orderArray } from "./display_data";
+import displayData, { orderArray } from "./display_data";
 document.getElementById('saveButton').addEventListener('click', saveToFile);
 
 function saveToFile() {
@@ -10,16 +10,12 @@ function saveToFile() {
     const row = table.rows[i];
     const rowData = {};
 
-    // Skip the first column with row numbers (if present)
     for (let j = 1; j < row.cells.length-1; j++) {
-      const cellName = orderArray[j - 1]; // Adjust for skipping the first cell
+      const cellName = orderArray[j - 1]; 
       let cellValue = row.cells[j].textContent;
 
-      // Interpret the third column as a date and convert it to a Date object
       if (j === 2) {
-        // console.log(cellValue)
         cellValue = new Date(...cellValue.split('.').reverse());
-        // console.log(cellValue)
       }
 
       rowData[cellName] = cellValue;
@@ -28,11 +24,12 @@ function saveToFile() {
     jsonData.push(rowData);
   }
 
-  // Create a new workbook
   const newWorkbook = XLSX.utils.book_new();
   const newSheet = XLSX.utils.json_to_sheet(jsonData, { skipHeader: true });
   XLSX.utils.book_append_sheet(newWorkbook, newSheet, 'Sheet1');
 
-  // Save the workbook to a file
-  XLSX.writeFile(newWorkbook, 'output.xlsx');
+  XLSX.writeFile(newWorkbook, `Глаукомный журнал ${new Date().toLocaleDateString()}.xlsx`);
+
+  localStorage.setItem('editedData', JSON.stringify([]));
+  displayData()
 }
